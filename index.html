@@ -47,10 +47,16 @@
 				endTime = 0;
 				prevBeta = roundedBeta;
 				hasProperSeating = true;
+
+				// Display a notification
+				alert("Proper Seating: Beta value " + roundedBeta);
 			} else if (roundedBeta >= 80 && roundedBeta <= 87) {
 				if (!hasProperSeating) {
 					// Display message for proper seating first
 					ctx.fillText(`Proper Seating Required`, 10, 50);
+
+					// Display a notification
+					alert("Proper Seating Required");
 				} else if (prevBeta < 80 || prevBeta > 87) {
 					// Display message for intermediate position
 					ctx.fillText(`Intermediate Position: Beta value ${roundedBeta}`, 10, 50);
@@ -58,6 +64,9 @@
 					// Start tracking time
 					startTime = new Date().getTime();
 					endTime = 0;
+
+					// Display a notification
+					alert("Intermediate Position: Beta value " + roundedBeta);
 				} else {
 					// Continue tracking time
 					endTime = new Date().getTime();
@@ -66,18 +75,24 @@
 					if (timeDiff > 60) {
 						// Display message if time exceeds 60 seconds
 						ctx.fillText(`User not properly seated`, 10, 150);
+
+						// Display a notification
+						alert("User not properly seated");
 					} else {
 						// Display time message
 						const timeMessage = `Time: ${timeDiff.toFixed(2)} seconds`;
 						ctx.fillText(`Intermediate Position: Beta value ${roundedBeta}`, 10, 50);
 						ctx.fillText(timeMessage, 10, 100);
+
+						// Display a notification
+						alert("Intermediate Position: Beta value " + roundedBeta + "\n" + timeMessage);
 					}
 				}
 
 				// Update previous beta value
 				prevBeta = roundedBeta;
 			} else {
-				// Display message for proper seating ///fuoghsudoghruoghsuhou
+				// Display message for proper seating
 				ctx.fillText(`Initial Seating: Beta value ${roundedBeta}`, 10, 50);
 
 				// Reset time tracking variables
@@ -85,8 +100,12 @@
 				endTime = 0;
 				prevBeta = roundedBeta;
 				hasProperSeating = false;
+
+				// Display a notification
+				alert("Initial Seating: Beta value " + roundedBeta);
 			}
 		}
+
 		// Function to start the event listeners
 		function startEventListeners() {
 			window.addEventListener("deviceorientation", deviceOrientationHandler);
